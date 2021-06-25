@@ -1,4 +1,4 @@
-import modelo.Cliente
+import br.com.alura.bytebank.modelo.Cliente
 import novomodelo.Cliente as NovoCliente
 import java.lang.String as StringJava
 
