@@ -1,28 +1,24 @@
 import br.com.alura.bytebank.modelo.Endereco
 
 fun main() {
-    val endereco = Endereco()
+    val endereco = Endereco(
+        logradouro = "Rua Vergueiro",
+        complemento = "Malkon"
+    )//Endereco tb é um Any. Vc pode usar hashCode, toString
+    val enderecoNovo = Endereco(
+        bairro = "Vila Mariana",
+        numero = 5000
+    )
+    println(endereco.equals(enderecoNovo))//falso pq são obj diferentes. Se vc atribuir a referencia de enderecoNovo a endereco vai ser true
 
-    //val objeto: Object = Any() //da erro de compilação pq a nível de código um Any não é um object, não herda dele
-    //mas se vc fazer assim:
-    println(Any())
-    // vai funcionar porque a nível de compilação(runtime) o Any é mapeado para Object no Java
-    println()
-    println(1) //dobrecarregado
-    println(1.0) //dobrecarregado
-    println(true) //sobrecarregado
-    println("Teste") //sobrecarregado
-    println(endereco) // o kotlin para receber um objeto ele declara tipo Any? - interrogação fala que var pode nao receber um valor
+    println(endereco.hashCode())
+    println(enderecoNovo.hashCode())
 
+    println(endereco.toString())// é mostrado aquele codigo pq vc nao sobrecreveu a representação de toString
+    println(enderecoNovo.toString())
+    //gera a mesma representação do toString de endereco acima
+    println("${endereco.javaClass}@${java.lang.Integer.toHexString(endereco.hashCode())}")
 
-    imprime()
-    imprime(1) //tipos primitivos são classes, por isso funcinam com Any
-    imprime(2.0)
-    imprime(endereco)
-
-    val teste: Any = imprime(endereco)
-
-    testaFuncionarios()
 }
 
 fun imprime(valor: Any): Any {
@@ -30,16 +26,5 @@ fun imprime(valor: Any): Any {
     return valor
 }
 
-fun imprime() {
-
-}
-
-fun imprime(valor: Int) {
-
-}
-
-fun imprime(endereco: Endereco) {
-
-}
 
 
