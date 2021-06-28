@@ -3,11 +3,13 @@ import br.com.alura.bytebank.modelo.Endereco
 fun main() {
     val endereco = Endereco(
         logradouro = "Rua Vergueiro",
-        complemento = "Malkon"
+        complemento = "Malkon",
+        cep = "00000-000"
     )//Endereco tb é um Any. Vc pode usar hashCode, toString
     val enderecoNovo = Endereco(
         bairro = "Vila Mariana",
-        numero = 5000
+        numero = 5000,
+        cep = "00000-000"
     )
     println(endereco.equals(enderecoNovo))//falso pq são obj diferentes. Se vc atribuir a referencia de enderecoNovo a endereco vai ser true
 
