@@ -1,28 +1,45 @@
-import br.com.alura.bytebank.modelo.*
+import br.com.alura.bytebank.modelo.Endereco
 
-//var totalContas = 0 //qualquer classe pode alterar a var global
-//    private set //somente dentro do arquivo que ela foi declarada(main.kt) pode modificar ela
 fun main() {
+    val endereco = Endereco()
 
-    val fran = object : Autenticavel { //classe anonima herdando de Autenticavel e sobrescrevendo método autentica
-        val nome: String = "Fran"
-        val cpf: String = "222.222.222-22"
-        val senha: Int = 1000
+    //val objeto: Object = Any() //da erro de compilação pq a nível de código um Any não é um object, não herda dele
+    //mas se vc fazer assim:
+    println(Any())
+    // vai funcionar porque a nível de compilação(runtime) o Any é mapeado para Object no Java
+    println()
+    println(1) //dobrecarregado
+    println(1.0) //dobrecarregado
+    println(true) //sobrecarregado
+    println("Teste") //sobrecarregado
+    println(endereco) // o kotlin para receber um objeto ele declara tipo Any? - interrogação fala que var pode nao receber um valor
 
-        override fun autentica(senha: Int) = this.senha == senha
-    }
 
-    println("Nome do cliente: ${fran.nome}")
+    imprime()
+    imprime(1) //tipos primitivos são classes, por isso funcinam com Any
+    imprime(2.0)
+    imprime(endereco)
 
-    val sistemaInterno = SistemaInterno()
-    sistemaInterno.entra(fran, 1000)
+    val teste: Any = imprime(endereco)
 
-    val alex = Cliente(nome = "Alex", cpf = "", senha = 1)
-    val contaPoupanca = ContaPoupanca(titular = alex, numero = 1000)
-    val contaCorrente = ContaCorrente(titular = alex, numero = 1001)
-    testaContasDiferentes()
+    testaFuncionarios()
+}
 
-    //println("Total de contas: ${totalContas}")
-    //println("Total de contas: ${totalContas}")
+fun imprime(valor: Any): Any {
+    println(valor)
+    return valor
+}
+
+fun imprime() {
 
 }
+
+fun imprime(valor: Int) {
+
+}
+
+fun imprime(endereco: Endereco) {
+
+}
+
+
